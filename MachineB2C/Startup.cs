@@ -34,7 +34,7 @@ namespace MachineB2C
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-                  .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAdB2C"));
+                  .AddMicrosoftIdentityWebApp(Configuration.GetSection("MachinesB2C"));
 
             services.AddControllersWithViews()
                 .AddMicrosoftIdentityUI();
