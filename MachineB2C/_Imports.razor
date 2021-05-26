@@ -1,4 +1,6 @@
 ﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using System.Text.Json 
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Forms
@@ -10,5 +12,4 @@
 @using MachineB2C.Shared
 @using MachineB2C.Pages
 @using MachineB2C.Entities
-
-
+@inject HttpClient client
