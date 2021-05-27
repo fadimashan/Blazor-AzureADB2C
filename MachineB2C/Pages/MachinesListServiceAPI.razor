@@ -59,20 +59,20 @@
 
     protected override async Task OnInitializedAsync()
     {
-        //machinesList = new List<MachineInfo>();
-        //string baseUrl = "https://apilayerclientuser05.azurewebsites.net/machiens";
-        //var result = await client.GetAsync(baseUrl);
+        machinesList = new List<MachineInfo>();
+        string baseUrl = "https://apilayerclientuser05.azurewebsites.net/machiens";
+        var result = await client.GetAsync(baseUrl);
 
-        //result.EnsureSuccessStatusCode();
-        //var response = await result.Content.ReadAsStringAsync();
-        //var content = JsonConvert.DeserializeObject<MachineResponse>(response);
-        //if (content.Success)
-        //{
-        //    machinesList = content.Machine;
+        result.EnsureSuccessStatusCode();
+        var response = await result.Content.ReadAsStringAsync();
+        var content = JsonConvert.DeserializeObject<MachineResponse>(response);
+        if (content.Success)
+        {
+            machinesList = content.Machine;
 
-        //}
+        }
 
-        machinesList = await client.GetFromJsonAsync<IEnumerable<MachineInfo>>("https://apilayerclientuser05.azurewebsites.net/machiens");
+        //machinesList = await client.GetFromJsonAsync<IEnumerable<MachineInfo>>("https://apilayerclientuser05.azurewebsites.net/machiens");
 
     }
 
