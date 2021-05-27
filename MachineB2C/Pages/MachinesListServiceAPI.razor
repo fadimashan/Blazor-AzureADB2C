@@ -1,0 +1,81 @@
+﻿@page "/machinesserviceapi"
+<h1>Machines Service API</h1>
+
+
+<hr class="solid">
+<div class="container-fulid" id="sec-container">
+    <div id="list-itmes" class="row no-gutters">
+
+        @foreach (var machine in machinesList)
+        {
+            var icon = $"/css/img/{machine.Status}.jpg";
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <h2 class="text-secondary">@machine.Name  <small> @machine.Status <img style="width:24px; height:24px;" src="@icon" /></small></h2>
+                                <h5>Date:<small>@machine.Date</small></h5>
+                                <p>ID: @machine.GUID</p>
+                            </div>
+
+                            <div class="col-4 justify-content-lg-center align-self-center text-center">
+                                <button class="btn btn-primary" @onclick="(() => StatusBtn(machine))">Change Status</button>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+@code {
+
+
+
+    private void StatusBtn(MachineInfo machine)
+    {
+        var icon = "/css/img/";
+        if (machine.Status == Status.Online)
+        {
+            machine.Status = Status.Offline;
+            machine.Icon = icon + Status.Offline;
+        }
+        else
+        {
+            machine.Status = Status.Online;
+            machine.Icon = icon + Status.Online;
+
+        }
+    }
+
+
+
+    private IEnumerable<MachineInfo> machinesList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        machinesList = new List<MachineInfo>();
+        string baseUrl = "https://apilayerclientuser05.azurewebsites.net/machiens";
+        var result = await client.GetAsync(baseUrl);
+
+        result.EnsureSuccessStatusCode();
+        var response = await result.Content.ReadAsStringAsync();
+        var content = JsonConvert.DeserializeObject<MachineResponse>(response);
+        if (content.Success)
+        {
+           machinesList = content.Machine;
+
+        }
+        
+    }
+
+
+
+}
+
+
