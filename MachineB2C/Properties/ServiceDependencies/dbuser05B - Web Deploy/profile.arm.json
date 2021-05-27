@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "APILayerClientUser05",
+      "defaultValue": "dbuser05B",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }
