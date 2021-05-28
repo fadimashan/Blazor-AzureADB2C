@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APILayer.Shared.Models
+namespace APILayer.Server.Models
 {
     public class MachineResponse
     {

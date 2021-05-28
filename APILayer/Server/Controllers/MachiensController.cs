@@ -1,4 +1,5 @@
 ﻿using APILayer.Server.Data;
+using APILayer.Server.Models;
 using APILayer.Shared.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +14,9 @@ namespace APILayer.Server.Controllers
     [ApiController]
     public class MachiensController : ControllerBase
     {
-        private LocalMachineManager machineManager;
+        private IMachineManager machineManager;
 
-        public MachiensController(LocalMachineManager _machineManager)
+        public MachiensController(IMachineManager _machineManager)
         {
             machineManager = _machineManager;
 

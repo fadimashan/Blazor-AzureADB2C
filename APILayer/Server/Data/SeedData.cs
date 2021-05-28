@@ -1,16 +1,37 @@
-﻿using APILayer.Shared.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APILayer.Server.Data;
+using APILayer.Server.Models;
+using APILayer.Shared.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace APILayer.Client.Services
+namespace APILayer.Server.Data
 {
-    public class LocalMachineManager : IMachineManager
+    public static class SeedData
     {
 
+        public static async Task InitAsync(IServiceProvider services)
+        {
+            using (var context = new ApiDbContext(services.GetRequiredService<DbContextOptions<ApiDbContext>>()))
+            {
+                if (context.Machine.Any())
+                {
+                    return;
+                }
+                else
+                {
+                  
+                    context.AddRange(GetMachines());
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
 
-        public async Task<List<Machine>> GetAllMachines()
+        private static List<Machine> GetMachines()
         {
             List<Machine> machines = new List<Machine>() {
 
@@ -45,11 +66,8 @@ namespace APILayer.Client.Services
 
             };
 
-            await Task.Delay(1);
-
             return machines;
         }
-    }
+
+    }   
 }
-
-

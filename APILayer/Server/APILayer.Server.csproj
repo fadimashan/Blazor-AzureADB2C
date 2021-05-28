@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>fa8af383-552a-48fd-b68c-9c639e5516ef</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,11 +13,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Client\APILayer.Client.csproj" />
-    <ProjectReference Include="..\Shared\APILayer.Shared.csproj" />
   </ItemGroup>
 
 
