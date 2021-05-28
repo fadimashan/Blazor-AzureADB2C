@@ -30,17 +30,14 @@ namespace APILayer.Server
             services.AddDbContext<ApiDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SQLServerConnectionApi"));
-                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
 
             });
-            //services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.Configure<ApiDbContext>(db => db.Database.Migrate());
 
             services.AddScoped<IMachineManager,LocalMachineManager>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-           // services.AddScoped<IMachineManager,APILayer.Server.Data.LocalMachineManager>();
         }
 
        
