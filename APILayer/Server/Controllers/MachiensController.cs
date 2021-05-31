@@ -34,5 +34,42 @@ namespace APILayer.Server.Controllers
             });
         }
 
+
+        [HttpPut]
+        public async Task<ActionResult<MachineResponse>> Edit(int id)
+        {
+
+            var machine = await machineManager.GetMachine(id);
+
+            if (machine is null)
+            {
+                return NotFound();
+            }
+
+
+            if (machine.Status == Status.Offline)
+            {
+                machine.Status = Status.Online;
+            }
+            else
+            {
+                machine.Status = Status.Offline;
+            }
+
+            if (await machineManager.SaveAsync())
+            {
+                return Ok(new OneMachineResponse()
+                {
+                    Success = true,
+                    Machine = machine
+                });
+            }
+            else
+            {
+                return StatusCode(500);
+            }
+
+        }
+
     }
 }

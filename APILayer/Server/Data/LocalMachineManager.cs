@@ -22,6 +22,17 @@ namespace APILayer.Server.Data
 
             return machines;
         }
+
+        public async Task<Machine> GetMachine(int id)
+        {
+            var machine = await db.Machine.FindAsync(id);
+            return machine;
+        }
+
+        public async Task<bool> SaveAsync()
+        {
+            return (await db.SaveChangesAsync()) >= 0;
+        }
     }
 }
 

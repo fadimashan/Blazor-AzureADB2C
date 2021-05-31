@@ -10,5 +10,10 @@ namespace APILayer.Shared.Models
     public interface IMachineManager
     {
         Task<List<Machine>> GetAllMachines();
+        Task<Machine> GetMachine(int id);
+
+        Task<bool> SaveAsync();
+
+
     }
 }
