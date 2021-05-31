@@ -8,6 +8,7 @@ namespace MachineB2C.Entities
     public class MachineInfo
 
     {
+        public int Id { get; set; }
         public Guid GUID { get; set; }
 
         public string Name { get; set; }
