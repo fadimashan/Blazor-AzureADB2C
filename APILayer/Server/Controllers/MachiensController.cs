@@ -50,10 +50,12 @@ namespace APILayer.Server.Controllers
             if (machine.Status == Status.Offline)
             {
                 machine.Status = Status.Online;
+                machine.Date = DateTime.Now;
             }
             else
             {
                 machine.Status = Status.Offline;
+                machine.Date = new DateTime(0001, 00, 00);
             }
 
             if (await machineManager.SaveAsync())
