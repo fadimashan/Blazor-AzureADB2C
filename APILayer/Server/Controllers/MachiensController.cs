@@ -55,7 +55,7 @@ namespace APILayer.Server.Controllers
             else
             {
                 machine.Status = Status.Offline;
-                machine.Date = new DateTime(0001, 00, 00);
+                machine.Date = DateTime.MinValue;
             }
 
             if (await machineManager.SaveAsync())
