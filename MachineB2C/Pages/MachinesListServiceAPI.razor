@@ -8,7 +8,15 @@
 
         @foreach (var machine in machinesList)
         {
-            var hide = machine.Status == Status.Offline ? true : false;
+            bool hide;
+            if (machine.Status == Status.Offline)
+            {
+                hide = true;
+            }
+            else
+            {
+                hide = false;
+            }
             var icon = $"/css/img/{machine.Status}.jpg";
             <div class="container">
                 <div class="card">
