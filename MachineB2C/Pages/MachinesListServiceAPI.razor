@@ -8,15 +8,7 @@
 
         @foreach (var machine in machinesList)
         {
-            bool hide;
-            if (machine.Status == Status.Offline)
-            {
-                hide = true;
-            }
-            else
-            {
-                hide = false;
-            }
+            
             var icon = $"/css/img/{machine.Status}.jpg";
             <div class="container">
                 <div class="card">
@@ -24,7 +16,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <h2 class="text-secondary">@machine.Name  <small> @machine.Status <img style="width:24px; height:24px;" src="@icon" /></small></h2>
-                                <h5>Date:<small hidden="@hide">@machine.Date</small></h5>
+                                <h5>Date:<small>@machine.Date</small></h5>
                                 <p>ID: @machine.GUID</p>
                             </div>
 
