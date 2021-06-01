@@ -60,11 +60,13 @@
         if (machine.Status == Status.Online)
         {
             machine.Status = Status.Offline;
+            machine.Date = machine.Date;
             machine.Icon = icon + Status.Offline;
         }
         else
         {
             machine.Status = Status.Online;
+            machine.Date = machine.Date;
             machine.Icon = icon + Status.Online;
 
         }
